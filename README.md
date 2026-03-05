@@ -4,7 +4,7 @@ A lightweight, single-page tutorial for beta testers to install and activate the
 
 ## What's Inside
 
-- `IndexNP.html` — the tutorial page
+- `index.html` — the tutorial page
 - `Videos/` — walkthrough videos for each phase
 
 ## How to View
