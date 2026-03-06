@@ -177,10 +177,15 @@
     flex-shrink: 0;
   }
 
-  .phase-1 .phase-dot { background: var(--phase1); box-shadow: 0 0 8px var(--phase1); }
-  .phase-2 .phase-dot { background: var(--phase2); box-shadow: 0 0 8px var(--phase2); }
-  .phase-3 .phase-dot { background: var(--phase3); box-shadow: 0 0 8px var(--phase3); }
-  .phase-4 .phase-dot { background: var(--phase4); box-shadow: 0 0 8px var(--phase4); }
+  .phase-1 .phase-dot, .phase-2 .phase-dot, .phase-3 .phase-dot, .phase-4 .phase-dot {
+    background: #387675;
+    box-shadow: 0 0 8px rgba(56,118,117,0.6);
+  }
+
+  .phase-1 .step-n, .phase-2 .step-n, .phase-3 .step-n, .phase-4 .step-n {
+    background: rgba(56,118,117,0.12);
+    color: #387675;
+  }
 
   .phase-title {
     font-size: 1rem;
@@ -223,10 +228,7 @@
     margin-top: 1px;
   }
 
-  .phase-1 .step-n { background: rgba(56,118,117,0.12); color: var(--phase1); }
-  .phase-2 .step-n { background: rgba(90,138,117,0.12); color: var(--phase2); }
-  .phase-3 .step-n { background: rgba(122,170,122,0.12); color: var(--phase3); }
-  .phase-4 .step-n { background: rgba(45,96,96,0.12); color: var(--phase4); }
+
 
   .step-text {
     font-size: 0.85rem;
