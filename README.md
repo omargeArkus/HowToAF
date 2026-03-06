@@ -6,6 +6,7 @@ A lightweight, single-page tutorial for beta testers to install and activate the
 
 - `index.html` — the tutorial page
 - `Videos/` — walkthrough videos for each phase
+- `images/` — logo and images
 
 ## How to View
 
