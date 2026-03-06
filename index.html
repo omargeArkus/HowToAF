@@ -7,19 +7,19 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Sora:wght@300;400;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #0a0f1e;
-    --surface: #111827;
-    --card: #161f35;
-    --border: #1e2d4a;
-    --accent: #3b82f6;
-    --accent2: #06b6d4;
-    --text: #e2e8f0;
-    --muted: #64748b;
-    --success: #10b981;
-    --phase1: #3b82f6;
-    --phase2: #8b5cf6;
-    --phase3: #f59e0b;
-    --phase4: #10b981;
+    --bg: #efefed;
+    --surface: #e4e4e2;
+    --card: #ffffff;
+    --border: #d4d4d2;
+    --accent: #387675;
+    --accent2: #4a9998;
+    --text: #1a2e2e;
+    --muted: #7a9090;
+    --success: #387675;
+    --phase1: #387675;
+    --phase2: #5a8a75;
+    --phase3: #7aaa7a;
+    --phase4: #2d6060;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -39,8 +39,8 @@
     position: fixed;
     inset: 0;
     background-image:
-      linear-gradient(rgba(59,130,246,0.03) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(59,130,246,0.03) 1px, transparent 1px);
+      linear-gradient(rgba(56,118,117,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(56,118,117,0.04) 1px, transparent 1px);
     background-size: 48px 48px;
     pointer-events: none;
     z-index: 0;
@@ -50,7 +50,7 @@
     position: sticky;
     top: 0;
     z-index: 100;
-    background: rgba(10,15,30,0.9);
+    background: rgba(239,239,237,0.92);
     backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--border);
     padding: 1rem 2rem;
@@ -79,9 +79,9 @@
   .beta-badge {
     font-family: 'DM Mono', monospace;
     font-size: 0.65rem;
-    background: rgba(59,130,246,0.15);
+    background: rgba(56,118,117,0.1);
     color: var(--accent);
-    border: 1px solid rgba(59,130,246,0.3);
+    border: 1px solid rgba(56,118,117,0.3);
     border-radius: 4px;
     padding: 0.2rem 0.5rem;
     letter-spacing: 0.08em;
@@ -122,6 +122,7 @@
     letter-spacing: -0.03em;
     line-height: 1.15;
     margin-bottom: 1rem;
+    color: #1f4a49;
   }
 
   .hero h1 span {
@@ -222,15 +223,15 @@
     margin-top: 1px;
   }
 
-  .phase-1 .step-n { background: rgba(59,130,246,0.15); color: var(--phase1); }
-  .phase-2 .step-n { background: rgba(139,92,246,0.15); color: var(--phase2); }
-  .phase-3 .step-n { background: rgba(245,158,11,0.15); color: var(--phase3); }
-  .phase-4 .step-n { background: rgba(16,185,129,0.15); color: var(--phase4); }
+  .phase-1 .step-n { background: rgba(56,118,117,0.12); color: var(--phase1); }
+  .phase-2 .step-n { background: rgba(90,138,117,0.12); color: var(--phase2); }
+  .phase-3 .step-n { background: rgba(122,170,122,0.12); color: var(--phase3); }
+  .phase-4 .step-n { background: rgba(45,96,96,0.12); color: var(--phase4); }
 
   .step-text {
     font-size: 0.85rem;
     line-height: 1.6;
-    color: #cbd5e1;
+    color: #3a5555;
   }
 
   .step-text strong { color: var(--text); font-weight: 600; }
@@ -253,7 +254,7 @@
 
   .video-slot:hover {
     border-color: var(--accent);
-    background: rgba(59,130,246,0.05);
+    background: rgba(56,118,117,0.05);
   }
 
   /* Vertical phone videos — natural flow, not absolute */
@@ -282,11 +283,36 @@
     pointer-events: none;
   }
 
+  .app-icon-slot {
+    width: 88px;
+    height: 88px;
+    border-radius: 22px;
+    margin: 0 auto 1.5rem;
+    overflow: hidden;
+  }
+
+  .app-icon-slot img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .app-icon-placeholder {
+    width: 100%;
+    height: 100%;
+    display: none;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .app-icon-placeholder svg { width: 40px; height: 40px; }
+
   .video-icon {
     width: 44px; height: 44px;
     border-radius: 50%;
-    background: rgba(59,130,246,0.12);
-    border: 1px solid rgba(59,130,246,0.25);
+    background: rgba(56,118,117,0.1);
+    border: 1px solid rgba(56,118,117,0.25);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -303,24 +329,24 @@
 
   /* Skip note */
   .skip-note {
-    background: rgba(139,92,246,0.08);
-    border: 1px solid rgba(139,92,246,0.2);
+    background: rgba(56,118,117,0.08);
+    border: 1px solid rgba(56,118,117,0.2);
     border-radius: 8px;
     padding: 0.6rem 0.9rem;
     font-size: 0.78rem;
-    color: #a78bfa;
+    color: #387675;
     font-family: 'DM Mono', monospace;
     margin-bottom: -0.25rem;
     grid-column: 1 / -1;
   }
 
   .warning-note {
-    background: rgba(245,158,11,0.08);
-    border-left: 3px solid var(--phase3);
+    background: rgba(180,120,40,0.08);
+    border-left: 3px solid #b47828;
     border-radius: 4px;
     padding: 0.5rem 0.75rem;
     font-size: 0.78rem;
-    color: #fcd34d;
+    color: #8a5a10;
     font-family: 'DM Mono', monospace;
     margin-top: 0.25rem;
   }
@@ -341,25 +367,14 @@
 
 <!-- ─── MAIN APP ─── -->
 <div id="app" style="display:block">
-  <header>
-    <div class="logo">
-      <svg viewBox="0 0 36 36" fill="none">
-        <rect width="36" height="36" rx="10" fill="url(#lgh)"/>
-        <path d="M18 8l8 4.5v9L18 26l-8-4.5v-9L18 8z" fill="white" opacity="0.9"/>
-        <defs>
-          <linearGradient id="lgh" x1="0" y1="0" x2="36" y2="36">
-            <stop offset="0%" stop-color="#3b82f6"/>
-            <stop offset="100%" stop-color="#06b6d4"/>
-          </linearGradient>
-        </defs>
-      </svg>
-      <span class="logo-text">How to install Active Fit+ Beta Program</span>
-    </div>
-    <span class="beta-badge">Beta Access</span>
-  </header>
-
   <main>
     <div class="hero">
+      <div class="app-icon-slot">
+        <img src="images/logo.png" alt="ActiveFit+ icon" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'"/>
+        <div class="app-icon-placeholder">
+          <svg viewBox="0 0 40 40" fill="none"><path d="M20 8l10 5.5v11L20 30l-10-5.5v-11L20 8z" fill="#387675" opacity="0.6"/></svg>
+        </div>
+      </div>
       <div class="hero-eyebrow">Beta Onboarding Guide</div>
       <h1>Get started with<br><span>ActiveFit+ Beta</span></h1>
       <p>Follow the steps below to install TestFlight, set up ActiveFit+, and activate your beta access. Each phase includes a short video walkthrough.</p>
