@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ActiveFit+ Android Beta Tutorial</title>
+<title>ActiveFit+ iOS Beta Tutorial</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Sora:wght@300;400;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -39,7 +39,6 @@
     z-index: 0;
   }
 
-  /* PROGRESS BAR */
   .progress-bar-wrap {
     position: fixed;
     top: 0; left: 0; right: 0;
@@ -55,7 +54,7 @@
     align-items: center;
     justify-content: center;
     gap: 0;
-    max-width: 500px;
+    max-width: 560px;
     margin: 0 auto;
   }
 
@@ -126,7 +125,6 @@
   .progress-step.active .progress-label { color: var(--accent); font-weight: 500; }
   .progress-step.done .progress-label { color: var(--accent); }
 
-  /* MAIN */
   main {
     position: relative;
     z-index: 1;
@@ -135,7 +133,6 @@
     padding: 5.5rem 1.5rem 5rem;
   }
 
-  /* HERO */
   .hero {
     text-align: center;
     margin-bottom: 2.5rem;
@@ -190,7 +187,6 @@
     line-height: 1.7;
   }
 
-  /* PHASE PANELS */
   .phase-panel { display: none; animation: fadeUp 0.4s ease both; }
   .phase-panel.active { display: block; }
 
@@ -273,16 +269,38 @@
   }
 
   .warning-note {
+    display: block;
     background: rgba(180,120,40,0.08);
     border-left: 3px solid #b47828;
     border-radius: 0 4px 4px 0;
-    padding: 0.5rem 0.75rem;
-    font-size: 0.78rem;
+    padding: 0.5rem 0.85rem;
+    font-size: 0.8rem;
+    font-family: 'Sora', sans-serif;
     color: #8a5a10;
-    font-family: 'DM Mono', monospace;
-    margin-top: 0.25rem;
-    line-height: 1.5;
+    line-height: 1.6;
+    margin-top: 0.5rem;
   }
+
+  .download-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.75rem;
+    padding: 0.65rem 1.25rem;
+    background: var(--accent);
+    color: white;
+    border-radius: 8px;
+    font-family: 'Sora', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-decoration: none;
+    box-shadow: 0 2px 10px rgba(56,118,117,0.3);
+    transition: background 0.2s, transform 0.1s;
+  }
+
+  .download-btn:hover { background: #2d6060; transform: translateY(-1px); }
+  .download-btn:active { transform: translateY(0); }
+  .download-btn svg { width: 16px; height: 16px; }
 
   /* VIDEO SLOT */
   .video-slot {
@@ -295,7 +313,6 @@
     align-items: center;
     justify-content: center;
     gap: 0.75rem;
-    transition: border-color 0.2s;
     min-height: 120px;
     padding: 0.5rem;
   }
@@ -335,12 +352,7 @@
   }
 
   .video-icon svg { width: 18px; height: 18px; fill: var(--accent); }
-
-  .video-label {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.68rem;
-    color: var(--muted);
-  }
+  .video-label { font-family: 'DM Mono', monospace; font-size: 0.68rem; color: var(--muted); }
 
   /* NAVIGATION */
   .phase-nav {
@@ -387,6 +399,7 @@
   .nav-btn-next:hover { background: #2d6060; transform: translateY(-1px); }
   .nav-btn-next:active { transform: translateY(0); }
   .nav-btn svg { width: 16px; height: 16px; }
+  .nav-btn:disabled { opacity: 0.3; pointer-events: none; }
 
   .nav-btn-back {
     display: inline-flex;
@@ -406,40 +419,7 @@
   }
 
   .nav-btn-back:hover { color: var(--accent); border-color: var(--accent); }
-  .nav-btn-back svg { width: 13px; height: 13px; transition: transform 0.2s; }
-  .nav-btn-back:hover svg { transform: translateX(-2px); }
 
-
-  .nav-btn:disabled { opacity: 0.3; pointer-events: none; }
-
-  .phase-counter {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.72rem;
-    color: var(--muted);
-  }
-
-  .download-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    margin-top: 0.75rem;
-    padding: 0.65rem 1.25rem;
-    background: var(--accent);
-    color: white;
-    border-radius: 8px;
-    font-family: 'Sora', sans-serif;
-    font-size: 0.85rem;
-    font-weight: 600;
-    text-decoration: none;
-    box-shadow: 0 2px 10px rgba(56,118,117,0.3);
-    transition: background 0.2s, transform 0.1s;
-  }
-
-  .download-btn:hover { background: #2d6060; transform: translateY(-1px); }
-  .download-btn:active { transform: translateY(0); }
-  .download-btn svg { width: 16px; height: 16px; }
-
-  /* FOOTER */
   footer {
     position: relative;
     z-index: 1;
@@ -454,7 +434,6 @@
 </head>
 <body>
 
-<!-- PROGRESS BAR -->
 <div class="progress-bar-wrap">
   <div class="progress-steps">
     <div class="progress-step active" onclick="goToPhase(0)">
@@ -463,11 +442,15 @@
     </div>
     <div class="progress-step" onclick="goToPhase(1)">
       <div class="progress-dot">2</div>
-      <div class="progress-label">App Tester</div>
+      <div class="progress-label">Firebase</div>
     </div>
     <div class="progress-step" onclick="goToPhase(2)">
       <div class="progress-dot">3</div>
-      <div class="progress-label">Install</div>
+      <div class="progress-label">Trust Profile</div>
+    </div>
+    <div class="progress-step" onclick="goToPhase(3)">
+      <div class="progress-dot">4</div>
+      <div class="progress-label">Download App</div>
     </div>
   </div>
 </div>
@@ -475,7 +458,6 @@
 <div id="app" style="display:block">
   <main>
 
-    <!-- HERO -->
     <div class="hero">
       <div class="app-icon-slot">
         <img src="images/logo.png" alt="ActiveFit+ icon" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'"/>
@@ -483,12 +465,12 @@
           <svg viewBox="0 0 40 40" fill="none"><path d="M20 8l10 5.5v11L20 30l-10-5.5v-11L20 8z" fill="#387675" opacity="0.6"/></svg>
         </div>
       </div>
-      <div class="hero-eyebrow">Android Beta Onboarding Guide</div>
-      <h1>Get started with<br><span>ActiveFit+ on Android</span></h1>
-      <p>Follow the steps below to install the beta version via Firebase App Distribution.</p>
+      <div class="hero-eyebrow">iOS Beta Onboarding Guide</div>
+      <h1>Get started with<br><span>ActiveFit+ on iPhone</span></h1>
+      <p>Follow the steps below to install the beta version via Firebase App Distribution on your iPhone.</p>
     </div>
 
-    <!-- PHASE 1: Invitation Email -->
+    <!-- PHASE 1 -->
     <div class="phase-panel active" id="panel-0">
       <div class="phase">
         <div class="phase-header">
@@ -500,11 +482,12 @@
           <div class="steps">
             <div class="step">
               <div class="step-n">1</div>
-              <div class="step-text">On your Android device, open your browser and tap the button below to access the beta download page.
+              <div class="step-text">On your iPhone, open <strong>Safari</strong> and tap the button below to access the beta download page.
                 <a href="https://appdistribution.firebase.google.com/pub/i/540c9b0916aed2a2" target="_blank" class="download-btn">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
                   Download ActiveFit+ Beta
                 </a>
+                <div class="warning-note">&#9888; You must use <strong>Safari</strong> — other browsers do not support the profile installation process on iOS.</div>
               </div>
             </div>
             <div class="step">
@@ -515,17 +498,19 @@
             </div>
             <div class="step">
               <div class="step-n">3</div>
-              <div class="step-text">Open your email app and look for the <strong>invitation email</strong> from Firebase. Open it directly on your Android phone — the link only works from your phone's browser.
-                <div class="tip-inline">&#128161; You may receive <strong>two invitation emails</strong> — one for Android and one for iOS. Make sure to open the <strong>Android invitation</strong> to proceed correctly.</div>
+              <div class="step-text">Open your email app and look for the <strong>invitation email</strong> from Firebase. Open it directly on your iPhone.
+                <div class="tip-inline">&#128161; You may receive <strong>two invitation emails</strong> — one for iOS and one for Android. Make sure to open the <strong>iOS invitation</strong> to proceed correctly.</div>
               </div>
             </div>
             <div class="step">
               <div class="step-n">4</div>
-              <div class="step-text">Locate the button labeled <strong>"Get Started"</strong> and tap it. Your browser will open the Firebase App Distribution download page.</div>
+              <div class="step-text">Locate the button labeled <strong>"Get Started"</strong> and tap it. Safari will open the Firebase App Distribution download page.</div>
             </div>
           </div>
           <div class="video-slot">
-            <video controls><source src="Videos/phase1_Android.mp4" type="video/mp4"></video> 
+            <video controls>
+              <source src="Videos/phase1_ios.mp4" type="video/mp4">
+            </video>
           </div>
         </div>
       </div>
@@ -534,9 +519,7 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
           Previous
         </button>
-        <a href="index.html" class="nav-btn-back">
-          Main menu
-        </a>
+        <a href="index.html" class="nav-btn-back">Main menu</a>
         <button class="nav-btn nav-btn-next" onclick="goToPhase(1)">
           Next Phase
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
@@ -544,45 +527,47 @@
       </div>
     </div>
 
-    <!-- PHASE 2: Firebase App Tester -->
+    <!-- PHASE 2 -->
     <div class="phase-panel" id="panel-1">
       <div class="phase">
         <div class="phase-header">
           <div class="phase-dot"></div>
-          <div class="phase-title">Phase 2 — Installing Firebase App Tester</div>
+          <div class="phase-title">Phase 2 — Installing Firebase App Distribution</div>
           <div class="phase-num">02</div>
         </div>
         <div class="phase-body">
           <div class="steps">
             <div class="step">
               <div class="step-n">1</div>
-              <div class="step-text">Your browser opens the <strong>Firebase App Distribution</strong> page showing the app name and version. Keep this page open — you will need it in the next step.</div>
-            </div>
-            <div class="step">
-              <div class="step-n">2</div>
-              <div class="step-text">Tap <strong>"Download the Firebase App Tester"</strong> — a free companion app by Google that manages your beta builds and notifies you of updates.</div>
-            </div>
-            <div class="step">
-              <div class="step-n">3</div>
-              <div class="step-text">You will be redirected to the <strong>Google Play Store</strong>. Tap <strong>"Install"</strong> and wait for the download to complete.</div>
-            </div>
-            <div class="step">
-              <div class="step-n">4</div>
-              <div class="step-text">Once installed, tap <strong>"Open"</strong> in the Play Store, or locate the <strong>"App Tester"</strong> icon in your app drawer.</div>
-            </div>
-            <div class="step">
-              <div class="step-n">5</div>
-              <div class="step-text">Tap <strong>"Sign in with Google"</strong> and select the account that received the invitation.
-                <div class="warning-note">&#9888; Using a different account will result in an "Access denied" error — the invitation is tied to your specific email address.</div>
+              <div class="step-text">Safari opens the <strong>Firebase App Distribution</strong> page showing the app name and version. Keep this page open.
+                <div class="tip-inline">&#128161; If the page does not load correctly, make sure you are using <strong>Safari</strong> — other browsers may not support profile installation on iOS.</div>
               </div>
             </div>
             <div class="step">
+              <div class="step-n">2</div>
+              <div class="step-text">Sign in with your <strong>Google account</strong> to verify your access to the build.</div>
+            </div>
+            <div class="step">
+              <div class="step-n">3</div>
+              <div class="step-text">Read and <strong>accept the Terms and Conditions</strong> when prompted.</div>
+            </div>
+            <div class="step">
+              <div class="step-n">4</div>
+              <div class="step-text">Tap <strong>"Register Device"</strong> or <strong>"Download Profile"</strong> to continue.</div>
+            </div>
+            <div class="step">
+              <div class="step-n">5</div>
+              <div class="step-text">A system popup will appear: <em>"This website is trying to download a configuration profile."</em> Tap <strong>Allow</strong>.</div>
+            </div>
+            <div class="step">
               <div class="step-n">6</div>
-              <div class="step-text">App Tester will display <strong>ActiveFit+ QA</strong> along with its version number. Tap <strong>"Accept invitation"</strong> or <strong>"Download"</strong> to proceed.</div>
+              <div class="step-text">Once the profile is downloaded, close the <strong>"Profile Downloaded"</strong> notification and proceed to the next phase.</div>
             </div>
           </div>
           <div class="video-slot">
-            <video controls><source src="Videos/phase2_android.mp4" type="video/mp4"></video>
+            <video controls>
+              <source src="Videos/phase2_ios.mp4" type="video/mp4">
+            </video>
           </div>
         </div>
       </div>
@@ -591,9 +576,7 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
           Previous
         </button>
-        <a href="index.html" class="nav-btn-back">
-          Main menu
-        </a>
+        <a href="index.html" class="nav-btn-back">Main menu</a>
         <button class="nav-btn nav-btn-next" onclick="goToPhase(2)">
           Next Phase
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
@@ -601,47 +584,41 @@
       </div>
     </div>
 
-    <!-- PHASE 3: Install -->
+    <!-- PHASE 3 -->
     <div class="phase-panel" id="panel-2">
       <div class="phase">
         <div class="phase-header">
           <div class="phase-dot"></div>
-          <div class="phase-title">Phase 3 — Allowing Unknown Sources & Installing</div>
+          <div class="phase-title">Phase 3 — Trust the Profile</div>
           <div class="phase-num">03</div>
         </div>
         <div class="phase-body">
           <div class="steps">
             <div class="step">
               <div class="step-n">1</div>
-              <div class="step-text">Tapping <strong>"Download"</strong> will trigger an Android <strong>security warning</strong> — this is expected behavior and your device is safe.
-                <div class="tip-inline">&#128161; This dialog only appears the first time. Future builds will install without interruption.</div>
-              </div>
+              <div class="step-text">Open your iPhone <strong>Settings</strong> app.</div>
             </div>
             <div class="step">
               <div class="step-n">2</div>
-              <div class="step-text">Tap <strong>"Settings"</strong> on the security dialog. This takes you directly to the permission screen for Firebase App Tester.
-                <div class="tip-inline">&#128161; If you accidentally tap "Cancel," return to Firebase App Tester and tap Download again — the dialog will reappear.</div>
-              </div>
+              <div class="step-text">Tap <strong>"Profile Downloaded"</strong> at the top of Settings — or navigate to <strong>General &gt; VPN &amp; Device Management</strong>.</div>
             </div>
             <div class="step">
               <div class="step-n">3</div>
-              <div class="step-text">Toggle <strong>"Allow from this source"</strong> or <strong>"Install unknown apps"</strong> to ON. This grants permission exclusively to Firebase App Tester — no other app is affected.</div>
+              <div class="step-text">Select the <strong>Firebase Software Distribution</strong> profile from the list.</div>
             </div>
             <div class="step">
               <div class="step-n">4</div>
-              <div class="step-text">Press <strong>Back</strong> to return to Firebase App Tester. The download will resume automatically. If it does not, tap <strong>"Download"</strong> again.</div>
+              <div class="step-text">Tap <strong>"Install"</strong> in the top right corner.</div>
             </div>
             <div class="step">
               <div class="step-n">5</div>
-              <div class="step-text">Once Android's installer launches, tap <strong>"Install"</strong> at the bottom. The installation usually takes only a few seconds.</div>
-            </div>
-            <div class="step">
-              <div class="step-n">6</div>
-              <div class="step-text">&#10003; <strong>Installation complete!</strong> Tap <strong>"Open"</strong> to launch the beta app immediately, or find it in your app drawer at any time.</div>
+              <div class="step-text">Enter your <strong>passcode</strong> when prompted, then tap <strong>Install</strong> again to confirm.</div>
             </div>
           </div>
           <div class="video-slot">
-            <video controls><source src="Videos/phase3_android.mp4" type="video/mp4"></video> 
+            <video controls>
+              <source src="Videos/phase3_ios.mp4" type="video/mp4">
+            </video>
           </div>
         </div>
       </div>
@@ -650,9 +627,50 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
           Previous
         </button>
-        <a href="index.html" class="nav-btn-back">
-          Main menu
-        </a>
+        <a href="index.html" class="nav-btn-back">Main menu</a>
+        <button class="nav-btn nav-btn-next" onclick="goToPhase(3)">
+          Next Phase
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- PHASE 4 -->
+    <div class="phase-panel" id="panel-3">
+      <div class="phase">
+        <div class="phase-header">
+          <div class="phase-dot"></div>
+          <div class="phase-title">Phase 4 — Download the App</div>
+          <div class="phase-num">04</div>
+        </div>
+        <div class="phase-body">
+          <div class="steps">
+            <div class="step">
+              <div class="step-n">1</div>
+              <div class="step-text">Return to <strong>Safari</strong> and go back to the Firebase App Distribution page — or tap the <strong>"App Tester"</strong> icon if it was added to your Home Screen.</div>
+            </div>
+            <div class="step">
+              <div class="step-n">2</div>
+              <div class="step-text">Find the app version you were invited to test and tap <strong>"Download"</strong> or <strong>"Install"</strong>.</div>
+            </div>
+            <div class="step">
+              <div class="step-n">3</div>
+              <div class="step-text">&#10003; <strong>All done!</strong> Wait for the app icon to appear on your Home Screen. Once it finishes loading, the beta app is ready to use.</div>
+            </div>
+          </div>
+          <div class="video-slot">
+            <video controls>
+              <source src="Videos/phase4_ios.mp4" type="video/mp4">
+            </video>
+          </div>
+        </div>
+      </div>
+      <div class="phase-nav">
+        <button class="nav-btn nav-btn-prev" onclick="goToPhase(2)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+          Previous
+        </button>
+        <a href="index.html" class="nav-btn-back">Main menu</a>
         <button class="nav-btn nav-btn-next" disabled>
           Done &#10003;
         </button>
@@ -668,21 +686,18 @@
 
 <script>
   let current = 0;
-  const total = 3;
+  const total = 4;
   const steps = document.querySelectorAll('.progress-step');
 
   function goToPhase(index) {
     document.getElementById('panel-' + current).classList.remove('active');
     steps[current].classList.remove('active');
-
     for (let i = 0; i < index; i++) steps[i].classList.add('done');
     for (let i = index; i < total; i++) steps[i].classList.remove('done');
-
     current = index;
     document.getElementById('panel-' + current).classList.add('active');
     steps[current].classList.add('active');
     steps[current].classList.remove('done');
-
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 </script>
